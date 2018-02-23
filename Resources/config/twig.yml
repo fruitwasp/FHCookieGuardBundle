@@ -4,5 +4,6 @@ services:
         arguments:
             - '@request_stack'
             - '@twig'
+            - '%fh_cookie_guard.cookie_name%'
         tags:
             - { name: twig.extension }

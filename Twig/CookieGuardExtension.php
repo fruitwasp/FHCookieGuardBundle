@@ -4,13 +4,8 @@ namespace FH\Bundle\CookieGuardBundle\Twig;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @author Nash van Gool <nash.van.gool@freshheads.com>
- */
 class CookieGuardExtension extends \Twig_Extension
 {
-    const COOKIE_NAME = 'cookies-accepted';
-
     /**
      * @var RequestStack
      */
@@ -21,10 +16,16 @@ class CookieGuardExtension extends \Twig_Extension
      */
     private $twig;
 
-    public function __construct(RequestStack $requestStack, \Twig_Environment $twig)
+    /**
+     * @var string
+     */
+    private $cookieName;
+
+    public function __construct(RequestStack $requestStack, \Twig_Environment $twig, $cookieName)
     {
         $this->requestStack = $requestStack;
         $this->twig = $twig;
+        $this->cookieName = $cookieName;
     }
 
     public function getFilters()
@@ -44,7 +45,8 @@ class CookieGuardExtension extends \Twig_Extension
     public function showIfCookieAccepted($html)
     {
         $request = $this->requestStack->getMasterRequest();
-        $cookiesAccepted = $request->cookies->get(self::COOKIE_NAME, false);
+
+        $cookiesAccepted = $request->cookies->get($this->cookieName, false);
         return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
             'content' => $html,
             'show' => $cookiesAccepted
@@ -57,7 +59,7 @@ class CookieGuardExtension extends \Twig_Extension
     public function cookieSettingsSubmitted()
     {
         $request = $this->requestStack->getMasterRequest();
-        $cookiesAccepted = $request->cookies->get(self::COOKIE_NAME, null);
+        $cookiesAccepted = $request->cookies->get($this->cookieName, null);
         return !is_null($cookiesAccepted);
     }
 }
