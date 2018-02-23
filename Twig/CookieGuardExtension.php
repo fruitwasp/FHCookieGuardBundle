@@ -42,11 +42,16 @@ class CookieGuardExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * @param string $html
+     * @return string
+     */
     public function showIfCookieAccepted($html)
     {
         $request = $this->requestStack->getMasterRequest();
 
         $cookiesAccepted = $request->cookies->get($this->cookieName, false);
+
         return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
             'content' => $html,
             'show' => $cookiesAccepted
