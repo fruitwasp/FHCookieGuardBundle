@@ -1,7 +1,7 @@
 Configuration
 =============
 
-Override the default cookie name.
+Overriding the default cookie name.
 -----------------
 
 ```yaml

@@ -65,6 +65,7 @@ class CookieGuardExtension extends \Twig_Extension
     {
         $request = $this->requestStack->getMasterRequest();
         $cookiesAccepted = $request->cookies->get($this->cookieName, null);
-        return !is_null($cookiesAccepted);
+
+        return is_bool($cookiesAccepted);
     }
 }
