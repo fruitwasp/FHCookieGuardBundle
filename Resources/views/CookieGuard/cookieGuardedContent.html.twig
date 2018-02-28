@@ -1,0 +1,5 @@
+{% if show %}
+    {{ content | raw }}
+{% else %}
+    <meta class="js-cookie-guarded" data-content="{{ content }}" />
+{% endif %}

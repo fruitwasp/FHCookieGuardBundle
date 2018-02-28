@@ -1,0 +1,9 @@
+services:
+    fh_cookie_guard.twig.cookie_guard_extension:
+        class: FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension
+        arguments:
+            - '@request_stack'
+            - '@twig'
+            - '%fh_cookie_guard.cookie_name%'
+        tags:
+            - { name: twig.extension }
