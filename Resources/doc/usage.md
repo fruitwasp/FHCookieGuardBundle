@@ -1,8 +1,23 @@
 Usage
 =====
 
-## cookie_guard twig filter
-After installing this bundle you can use the cookie_guard twig filter. If the use of cookies has been accepted, the filter makes sure your script wil be applied on the page, otherwise the script will be included as a meta tag. 
+## Setting the "cookies-accepted" cookie:
+This FHCookieGuardBundle itself does not set the "cookies-accepted" cookie, you need to set the cookie by your own, for example with javascript. The name of the cookie (default: "cookies-accepted") needs to be the same as configured in the configuration and the value needs to be ```1``` for accepted and ```0``` for 
+refused.
+
+## cookie_settings_submitted() twig function:
+To check if there are cookie settings submitted by the user, you can use de cookie_settings_submitted() twig function. This function returns ```true``` if the cookie configured in the configuration (default: "cookies-accepted") is found, otherwise the function returns ```false```.
+
+Below you find an example of the cookie_settings_submitted() function:
+
+```html
+    {% if not cookie_settings_submitted() %}
+        {% include "BomAppBundle:CookieGuard:cookieSettings.html.twig" %}
+    {% endif %}
+```
+
+## cookie_guard twig filter:
+If the use of cookies has been accepted, the filter makes sure your script wil be applied on the page, otherwise the script will be included as a meta tag. 
 
 Below you find an example of Google Tag Manager in combination with cookie_guard:
 
@@ -14,5 +29,5 @@ Below you find an example of Google Tag Manager in combination with cookie_guard
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','0123456789');</script>
-        <!-- End Google Tag Manager -->") | raw | cookie_guard
+        <!-- End Google Tag Manager -->")|raw|cookie_guard
     }}
