@@ -2,10 +2,16 @@
 
 namespace FH\Bundle\CookieGuardBundle\Twig;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class CookieGuardExtension extends \Twig_Extension
 {
+    /**
+     * @var Request
+     */
+    private $request;
+
     /**
      * @var RequestStack
      */
@@ -48,9 +54,7 @@ class CookieGuardExtension extends \Twig_Extension
      */
     public function showIfCookieAccepted($html)
     {
-        $request = $this->requestStack->getMasterRequest();
-
-        $cookiesAccepted = $request->cookies->get($this->cookieName, false);
+        $cookiesAccepted = $this->getRequest()->cookies->get($this->cookieName, false);
 
         return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
             'content' => $html,
@@ -63,9 +67,20 @@ class CookieGuardExtension extends \Twig_Extension
      */
     public function cookieSettingsSubmitted()
     {
-        $request = $this->requestStack->getMasterRequest();
-        $cookiesAccepted = $request->cookies->get($this->cookieName, null);
+        return $this->getRequest()->cookies->has($this->cookieName);
+    }
 
-        return is_bool($cookiesAccepted);
+    /**
+     * @return Request
+     */
+    private function getRequest()
+    {
+        if ($this->request instanceof Request) {
+            return $this->request;
+        }
+
+        $this->request = $this->requestStack->getMasterRequest();
+
+        return $this->request;
     }
 }
