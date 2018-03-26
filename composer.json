@@ -2,6 +2,21 @@
     "name": "freshheads/cookie-guard-bundle",
     "type": "symfony-bundle",
     "description": "The FHCookieGuardBundle can be used to activate (external) scripts after cookies are accepted by the client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joris van de Sande",
+            "email": "joris.van.de.sande@freshheads.com",
+            "homepage": "https://freshheads.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Jeffrey Moelands",
+            "email": "jeffrey.moelands@freshheads.com",
+            "homepage": "https://freshheads.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^5.6 || ^7.0",
         "symfony/config": "^3.0 || ^4.0",
