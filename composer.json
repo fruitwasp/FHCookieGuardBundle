@@ -15,6 +15,12 @@
             "email": "jeffrey.moelands@freshheads.com",
             "homepage": "https://freshheads.com",
             "role": "Developer"
+        },
+        {
+            "name": "Nash van Gool",
+            "email": "nash.van.gool@freshheads.com",
+            "homepage": "https://freshheads.com",
+            "role": "Developer"
         }
     ],
     "require": {
