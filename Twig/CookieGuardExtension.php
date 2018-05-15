@@ -44,7 +44,8 @@ class CookieGuardExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('cookie_settings_submitted', [$this, 'cookieSettingsSubmitted'], ['is_safe' => ['html']])
+            new \Twig_SimpleFunction('cookie_settings_submitted', [$this, 'cookieSettingsSubmitted'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('cookie_settings_accepted', [$this, 'cookieSettingsAreAccepted'])
         ];
     }
 
@@ -54,12 +55,15 @@ class CookieGuardExtension extends \Twig_Extension
      */
     public function showIfCookieAccepted($html)
     {
-        $cookiesAccepted = $this->getRequest()->cookies->get($this->cookieName, false);
-
         return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
             'content' => $html,
-            'show' => $cookiesAccepted
+            'show' => $this->cookieSettingsAreAccepted()
         ]);
+    }
+
+    public function cookieSettingsAreAccepted()
+    {
+        return $this->getRequest()->cookies->get($this->cookieName, false);
     }
 
     /**

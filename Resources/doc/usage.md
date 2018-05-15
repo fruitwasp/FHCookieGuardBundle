@@ -16,6 +16,17 @@ Below you find an example of the cookie_settings_submitted() function:
     {% endif %}
 ```
 
+## cookie_settings_accepted() twig function:
+To check if the cookie settings are accepted by the user, you can use de cookie_settings_accepted() twig function.
+
+Below you find an example of the cookie_settings_submitted() function:
+
+```html
+    {% if cookie_settings_accepted() %}
+        {% include "BomAppBundle:Banner:advert.html.twig" %}
+    {% endif %}
+```
+
 ## cookie_guard twig filter:
 If the use of cookies has been accepted, the filter makes sure your script wil be applied on the page, otherwise the script will be included as a meta tag. 
 
