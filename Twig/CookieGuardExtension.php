@@ -87,4 +87,12 @@ class CookieGuardExtension extends \Twig_Extension
 
         return $this->request;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return get_called_class();
+    }
 }
