@@ -1,6 +1,8 @@
 FHCookieGuardBundle
 ============
 
+[![Build Status](https://travis-ci.org/freshheads/FHCookieGuardBundle.svg?branch=develop)](https://travis-ci.org/freshheads/FHCookieGuardBundle)
+
 The FHCookieGuardBundle can be used to activate (external) scripts when cookies are accepted by the client.
 
 Documentation
