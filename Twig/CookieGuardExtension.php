@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace FH\Bundle\CookieGuardBundle\Twig;
 
@@ -7,41 +8,26 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class CookieGuardExtension extends \Twig_Extension
 {
-    /**
-     * @var Request
-     */
     private $request;
-
-    /**
-     * @var RequestStack
-     */
     private $requestStack;
-
-    /**
-     * @var \Twig_Environment
-     */
     private $twig;
-
-    /**
-     * @var string
-     */
     private $cookieName;
 
-    public function __construct(RequestStack $requestStack, \Twig_Environment $twig, $cookieName)
+    public function __construct(RequestStack $requestStack, \Twig_Environment $twig, string $cookieName)
     {
         $this->requestStack = $requestStack;
         $this->twig = $twig;
         $this->cookieName = $cookieName;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new \Twig_SimpleFilter('cookie_guard', [$this, 'showIfCookieAccepted'], ['pre_escape' => 'html', 'is_safe' => ['html']])
         ];
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new \Twig_SimpleFunction('cookie_settings_submitted', [$this, 'cookieSettingsSubmitted'], ['is_safe' => ['html']]),
@@ -49,35 +35,28 @@ class CookieGuardExtension extends \Twig_Extension
         ];
     }
 
-    /**
-     * @param string $html
-     * @return string
-     */
-    public function showIfCookieAccepted($html)
+    public function showIfCookieAccepted(string $content): string
     {
         return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
-            'content' => $html,
+            'content' => $content,
             'show' => $this->cookieSettingsAreAccepted()
         ]);
     }
 
+    /**
+     * @return mixed
+     */
     public function cookieSettingsAreAccepted()
     {
         return $this->getRequest()->cookies->get($this->cookieName, false);
     }
 
-    /**
-     * @return bool
-     */
-    public function cookieSettingsSubmitted()
+    public function cookieSettingsSubmitted(): bool
     {
         return $this->getRequest()->cookies->has($this->cookieName);
     }
 
-    /**
-     * @return Request
-     */
-    private function getRequest()
+    private function getRequest(): Request
     {
         if ($this->request instanceof Request) {
             return $this->request;
@@ -88,10 +67,7 @@ class CookieGuardExtension extends \Twig_Extension
         return $this->request;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return get_class($this);
     }

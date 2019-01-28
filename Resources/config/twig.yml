@@ -1,9 +1,14 @@
 services:
-    fh_cookie_guard.twig.cookie_guard_extension:
-        class: FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension
-        arguments:
-            - '@request_stack'
-            - '@twig'
-            - '%fh_cookie_guard.cookie_name%'
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Alias added, to remain BC
+    fh_cookie_guard.twig.cookie_guard_extension: '@FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension'
+
+    FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension:
+        bind:
+            $cookieName: '%fh_cookie_guard.cookie_name%'
         tags:
             - { name: twig.extension }

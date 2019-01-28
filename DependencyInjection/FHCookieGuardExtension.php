@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace FH\Bundle\CookieGuardBundle\DependencyInjection;
 
@@ -12,12 +13,12 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class FHCookieGuardExtension extends Extension
+final class FHCookieGuardExtension extends Extension
 {
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
