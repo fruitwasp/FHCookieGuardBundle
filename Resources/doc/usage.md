@@ -12,7 +12,7 @@ Below you find an example of the cookie_settings_submitted() function:
 
 ```html
     {% if not cookie_settings_submitted() %}
-        {% include "BomAppBundle:CookieGuard:cookieSettings.html.twig" %}
+        {% include "templates/website/cookie/cookieSettings.html.twig" %}
     {% endif %}
 ```
 
@@ -23,7 +23,7 @@ Below you find an example of the cookie_settings_submitted() function:
 
 ```html
     {% if cookie_settings_accepted() %}
-        {% include "BomAppBundle:Banner:advert.html.twig" %}
+        {% include "templates/website/banner/advert.html.twig" %}
     {% endif %}
 ```
 
