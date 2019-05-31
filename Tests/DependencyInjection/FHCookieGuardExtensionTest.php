@@ -6,12 +6,13 @@ namespace FH\Bundle\CookieGuardBundle\Tests\DependencyInjection;
 use FH\Bundle\CookieGuardBundle\DependencyInjection\FHCookieGuardExtension;
 use FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @author Evert Harmeling <evert@freshheads.com>
  */
-final class FHCookieGuardExtensionTest extends \PHPUnit\Framework\TestCase
+final class FHCookieGuardExtensionTest extends TestCase
 {
     private $container;
     private $extension;

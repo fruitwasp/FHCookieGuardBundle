@@ -6,13 +6,14 @@ namespace FH\Bundle\CookieGuardBundle\Tests\Twig;
 use FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @author Evert Harmeling <evert@freshheads.com>
  */
-final class CookieGuardExtensionTest extends \PHPUnit\Framework\TestCase
+final class CookieGuardExtensionTest extends TestCase
 {
     private const COOKIE_NAME = 'test-cookie';
 
