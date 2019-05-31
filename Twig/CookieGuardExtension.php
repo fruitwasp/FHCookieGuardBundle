@@ -5,8 +5,11 @@ namespace FH\Bundle\CookieGuardBundle\Twig;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class CookieGuardExtension extends \Twig_Extension
+class CookieGuardExtension extends AbstractExtension
 {
     private $request;
     private $requestStack;
@@ -23,15 +26,15 @@ class CookieGuardExtension extends \Twig_Extension
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('cookie_guard', [$this, 'showIfCookieAccepted'], ['pre_escape' => 'html', 'is_safe' => ['html']])
+            new TwigFilter('cookie_guard', [$this, 'showIfCookieAccepted'], ['pre_escape' => 'html', 'is_safe' => ['html']])
         ];
     }
 
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('cookie_settings_submitted', [$this, 'cookieSettingsSubmitted'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('cookie_settings_accepted', [$this, 'cookieSettingsAreAccepted'])
+            new TwigFunction('cookie_settings_submitted', [$this, 'cookieSettingsSubmitted'], ['is_safe' => ['html']]),
+            new TwigFunction('cookie_settings_accepted', [$this, 'cookieSettingsAreAccepted'])
         ];
     }
 

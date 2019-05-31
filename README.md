@@ -1,7 +1,7 @@
 FHCookieGuardBundle
 ============
 
-[![Build status][develop build status]][develop branch]  [![Coverage Status][develop build coverage]][develop coverage]
+[![Build status][develop build status]][develop branch]  [![Scrutinizer Code Quality][develop code quality]][develop scrutiziner]
 
 The FHCookieGuardBundle can be used to activate (external) scripts when cookies are accepted by the client.
 
@@ -14,5 +14,5 @@ Documentation
 
     [develop branch]: https://github.com/freshheads/FHCookieGuardBundle/tree/develop
     [develop build status]: https://travis-ci.org/freshheads/FHCookieGuardBundle.svg?branch=develop
-    [develop coverage]: https://scrutinizer-ci.com/g/freshheads/FHCookieGuardBundle/?branch=develop
-    [develop build coverage]: https://img.shields.io/scrutinizer/coverage/g/freshheads/FHCookieGuardBundle/develop.svg?style=flat-square
+    [develop scrutiziner]: https://scrutinizer-ci.com/g/freshheads/FHCookieGuardBundle/?branch=develop
+    [develop code quality]: https://scrutinizer-ci.com/g/freshheads/FHCookieGuardBundle/badges/quality-score.png?b=develop

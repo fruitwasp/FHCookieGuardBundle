@@ -9,6 +9,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Twig\Environment;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * @author Evert Harmeling <evert@freshheads.com>
@@ -25,7 +28,7 @@ final class CookieGuardExtensionTest extends TestCase
         $filterNames = [];
         /** @var \Twig_Filter $filter */
         foreach ($extension->getFilters() as $filter) {
-            Assert::assertInstanceOf(\Twig_Filter::class, $filter);
+            Assert::assertInstanceOf(TwigFilter::class, $filter);
             $filterNames[] = $filter->getName();
         }
 
@@ -40,7 +43,7 @@ final class CookieGuardExtensionTest extends TestCase
         $functionNames = [];
         /** @var \Twig_Function $filter */
         foreach ($extension->getFunctions() as $function) {
-            Assert::assertInstanceOf(\Twig_Function::class, $function);
+            Assert::assertInstanceOf(TwigFunction::class, $function);
             $functionNames[] = $function->getName();
         }
 
@@ -141,11 +144,11 @@ final class CookieGuardExtensionTest extends TestCase
     }
 
     /**
-     * @return MockObject|\Twig_Environment
+     * @return MockObject|Environment
      */
     private function createTwigEnvironmentMock(string $content = 'cookie not accepted', bool $show = false): MockObject
     {
-        $twigEnvironmentMock = $this->getMockBuilder(\Twig_Environment::class)
+        $twigEnvironmentMock = $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()
             ->setMethods([
                 'render'
