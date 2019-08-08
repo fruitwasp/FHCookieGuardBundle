@@ -56,6 +56,9 @@
             "dev-develop": "1.x-dev"
         }
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always"
+    },
     "support": {
         "issues": "https://github.com/freshheads/FHCookieGuardBundle/issues"
     }

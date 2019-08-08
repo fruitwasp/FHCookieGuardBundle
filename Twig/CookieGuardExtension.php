@@ -5,6 +5,7 @@ namespace FH\Bundle\CookieGuardBundle\Twig;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -16,7 +17,7 @@ class CookieGuardExtension extends AbstractExtension
     private $twig;
     private $cookieName;
 
-    public function __construct(RequestStack $requestStack, \Twig_Environment $twig, string $cookieName)
+    public function __construct(RequestStack $requestStack, Environment $twig, string $cookieName)
     {
         $this->requestStack = $requestStack;
         $this->twig = $twig;
@@ -46,12 +47,9 @@ class CookieGuardExtension extends AbstractExtension
         ]);
     }
 
-    /**
-     * @return mixed
-     */
-    public function cookieSettingsAreAccepted()
+    public function cookieSettingsAreAccepted(): bool
     {
-        return $this->getRequest()->cookies->get($this->cookieName, false);
+        return (bool) $this->getRequest()->cookies->get($this->cookieName, false);
     }
 
     public function cookieSettingsSubmitted(): bool

@@ -28,8 +28,7 @@ final class Configuration implements ConfigurationInterface
                 ->scalarNode('cookie_name')
                     ->defaultValue('cookies-accepted')
                 ->end()
-            ->end()
-        ;
+            ->end();
 
         return $treeBuilder;
     }

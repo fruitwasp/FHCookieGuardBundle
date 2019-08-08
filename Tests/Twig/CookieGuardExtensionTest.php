@@ -26,7 +26,7 @@ final class CookieGuardExtensionTest extends TestCase
         $extension = $this->createCookieGuardExtension();
 
         $filterNames = [];
-        /** @var \Twig_Filter $filter */
+        /** @var TwigFilter $filter */
         foreach ($extension->getFilters() as $filter) {
             Assert::assertInstanceOf(TwigFilter::class, $filter);
             $filterNames[] = $filter->getName();
@@ -41,7 +41,7 @@ final class CookieGuardExtensionTest extends TestCase
         $extension = $this->createCookieGuardExtension();
 
         $functionNames = [];
-        /** @var \Twig_Function $filter */
+        /** @var TwigFunction $filter */
         foreach ($extension->getFunctions() as $function) {
             Assert::assertInstanceOf(TwigFunction::class, $function);
             $functionNames[] = $function->getName();
