@@ -40,7 +40,7 @@ class CookieGuardExtension extends AbstractExtension
 
     public function showIfCookieAccepted(string $content): string
     {
-        return $this->twig->render('FHCookieGuardBundle:CookieGuard:cookieGuardedContent.html.twig', [
+        return $this->twig->render('@FHCookieGuard/CookieGuard/cookieGuardedContent.html.twig', [
             'content' => $content,
             'show' => $this->cookieSettingsAreAccepted()
         ]);
