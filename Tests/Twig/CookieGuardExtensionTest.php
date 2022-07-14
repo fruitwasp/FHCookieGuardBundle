@@ -110,15 +110,6 @@ final class CookieGuardExtensionTest extends TestCase
         Assert::assertEquals('cookie accepted', $extension->showIfCookieAccepted('cookie accepted'));
     }
 
-    public function testName(): void
-    {
-        // arrange
-        $extension = $this->createCookieGuardExtension();
-
-        // act && assert
-        Assert::assertEquals(CookieGuardExtension::class, $extension->getName());
-    }
-
     private function createRequestWithCookie(): Request
     {
         return new Request([], [], [], [

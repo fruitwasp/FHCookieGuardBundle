@@ -14,8 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 final class FHCookieGuardExtensionTest extends TestCase
 {
-    private $container;
-    private $extension;
+    private ?ContainerBuilder $container;
+    private ?FHCookieGuardExtension $extension;
 
     public function setUp(): void
     {
@@ -30,8 +30,7 @@ final class FHCookieGuardExtensionTest extends TestCase
         Assert::assertEquals('cookies-accepted', $this->container->getParameter('fh_cookie_guard.cookie_name'));
         Assert::assertContains(CookieGuardExtension::class, $this->container->getServiceIds());
 
-        Assert::assertTrue($this->container->hasAlias('fh_cookie_guard.twig.cookie_guard_extension'));
-        Assert::assertEquals(CookieGuardExtension::class, (string) $this->container->getAlias('fh_cookie_guard.twig.cookie_guard_extension'));
+        Assert::assertTrue($this->container->hasDefinition(CookieGuardExtension::class));
     }
 
     public function tearDown(): void
