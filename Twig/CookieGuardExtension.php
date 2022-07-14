@@ -12,10 +12,10 @@ use Twig\TwigFunction;
 
 class CookieGuardExtension extends AbstractExtension
 {
-    private $request;
-    private $requestStack;
-    private $twig;
-    private $cookieName;
+    private ?Request $request = null;
+    private RequestStack $requestStack;
+    private Environment $twig;
+    private string $cookieName;
 
     public function __construct(RequestStack $requestStack, Environment $twig, string $cookieName)
     {
@@ -63,13 +63,6 @@ class CookieGuardExtension extends AbstractExtension
             return $this->request;
         }
 
-        $this->request = $this->requestStack->getMasterRequest();
-
-        return $this->request;
-    }
-
-    public function getName(): string
-    {
-        return get_class($this);
+        return $this->request = $this->requestStack->getMainRequest();
     }
 }

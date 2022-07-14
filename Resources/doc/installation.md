@@ -9,11 +9,11 @@ Installation
 2. Add the bundle and its dependencies (if not already present) to AppKernel.php:
    ```php
    // in AppKernel::registerBundles()
-   $bundles = array(
+   $bundles = [
        // ...
        new FH\Bundle\CookieGuardBundle\FHCookieGuardBundle(),
        // ...
-   );
+   ];
    ```
 
 Now the bundle is ready to be [configured](configuration.md)!

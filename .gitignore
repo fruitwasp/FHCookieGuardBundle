@@ -1,5 +1,6 @@
 /.env
 /.idea
+/.php-version
 /.phpunit.result.cache
 /composer.lock
 /symfony.lock
