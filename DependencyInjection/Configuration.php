@@ -18,6 +18,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('cookie_name')
+                    ->cannotBeEmpty()
                     ->defaultValue('cookies-accepted')
                 ->end()
             ->end();

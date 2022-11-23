@@ -2,7 +2,7 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        public: false
 
     FH\Bundle\CookieGuardBundle\Twig\CookieGuardExtension:
-        $cookieName: '%fh_cookie_guard.cookie_name%'
+        arguments:
+            $cookieName: '%fh_cookie_guard.cookie_name%'
