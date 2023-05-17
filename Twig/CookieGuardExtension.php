@@ -63,6 +63,10 @@ class CookieGuardExtension extends AbstractExtension
             return $this->request;
         }
 
-        return $this->request = $this->requestStack->getMainRequest();
+        return $this->request =
+            method_exists($this->requestStack, 'getMainRequest')
+                ? $this->requestStack->getMainRequest()
+                : $this->requestStack->getMasterRequest()
+            ;
     }
 }

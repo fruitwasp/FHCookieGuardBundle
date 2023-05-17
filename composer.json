@@ -23,10 +23,10 @@
     ],
     "require": {
         "php": ">=7.4",
-        "symfony/config": "^5.4 | ^6.1",
-        "symfony/dependency-injection": "^5.4 | ^6.1",
-        "symfony/http-kernel": "^5.4 | ^6.1",
-        "symfony/yaml": "^5.4 | ^6.1",
+        "symfony/config": "^4.4 | ^5.4 | ^6.1",
+        "symfony/dependency-injection": "^4.4 | ^5.4 | ^6.1",
+        "symfony/http-kernel": "^4.4 | ^5.4 | ^6.1",
+        "symfony/yaml": "^4.4 | ^5.4 | ^6.1",
         "twig/twig" : "^2.15 | ^3.4"
     },
     "require-dev": {
